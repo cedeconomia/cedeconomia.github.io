@@ -8,6 +8,8 @@ const firebaseConfig = {
     messagingSenderId: "23828139838",
     appId: "1:23828139838:web:b6626f2f3d76f5ee"
   };
+const timeRegLimit = 1 * 60 * 60 * 1000; //1h
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var provider = new firebase.auth.GoogleAuthProvider();
