@@ -109,7 +109,19 @@ function updateSW() {
             reject('permission def/den');
         }
     })
+}
 
+function updateSWcache(){
+    if ('serviceWorker' in navigator) {
+        //console.log("Updating");
+        navigator.serviceWorker.register('/firebase-messaging-sw.js', { scope: '/firebase-cloud-messaging-push-scope' })
+            .then(function (swReg) {
+                console.log('Updating')
+                swReg.update();
+            });
+    } else {
+        console.log("SW Dont support");
+    }
 }
 
 
@@ -281,18 +293,24 @@ function setFormTopic(){
 }
 
 function toggleNoti(){
-    let opCheck = document.getElementsByClassName('opt');
-    if(document.getElementById('notiState').checked){
-        //Activada noti
-        for(let check in opCheck){
-            opCheck[check].checked = true;
+    if(!isApple()){
+        let opCheck = document.getElementsByClassName('opt');
+        if(document.getElementById('notiState').checked){
+            //Activada noti
+            for(let check in opCheck){
+                opCheck[check].checked = true;
+            }
+        }else{
+            //desactivadas
+            for(let check in opCheck){
+                opCheck[check].checked = false;
+            }
         }
     }else{
-        //desactivadas
-        for(let check in opCheck){
-            opCheck[check].checked = false;
-        }
+        //Es Apple => Safari doesnt support Agosto-2019
+        alert("Apple no soporta notificaciones en Web. Lo sentimos!");
     }
+   
 }
 //#endregion msg
 
