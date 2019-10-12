@@ -19,13 +19,17 @@ h3.fondo{
     font-weight: normal !important;
 }
 
+iframe.w100{
+    width: 100%;
+}
+
 img.w100{
-    width: 100%
+    width: 100%;
 }
 
 @media (min-width: 768px){
     img.w100{
-        width: 50%
+        width: 50%;
     } 
 }
 
