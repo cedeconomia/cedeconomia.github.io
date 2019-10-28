@@ -452,6 +452,7 @@ function ordeByKey(arr, campo) {
 
 function buildData(datos) {
     if (datos) {
+        salonesData = [];
         datos.forEach(d => {
             //Chequeamos si existe la materia
             let ref = d['gsx$materia']['$t'];
